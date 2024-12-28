@@ -27,10 +27,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+TIME_ZONE = "EST"
 
 # Application definition
 
 INSTALLED_APPS = [
+    "tailwind",
+    "theme",
+    "django_browser_reload",
     "display.apps.DisplayConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -41,6 +53,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
