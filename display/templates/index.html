@@ -1,5 +1,26 @@
 {% extends "base.html" %}
+{% load svg %}
 
 {% block content %}
-    <p class="bg-red-500">Hi there</p>
+    <div class="relative h-[100vh] w-[100vw] overflow-hidden">
+        {% include "navbar.html" %}
+
+        <div class="flex flex-col items-center justify-center h-[100%] gap-5">
+            <p class="text-3xl text-white">Welcome to <b>Volman!</b></p>
+            <div class="bg-black w-[50vw] rounded-xl bg-opacity-55">
+                <p class="text-white text-xl p-5 text-center">
+                    <b>Volman</b> is a mock volunteer management system implemented in the Django framework. Go ahead and sign in as either a staff member or a visitor!
+                </p>
+                <div class="flex p-5 rounded-xl justify-center gap-7">
+                    {% svg 'django' %}
+                    {% svg 'python' %}
+                    {% svg 'tailwind' %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute top-0 left-0 w-[800px] h-[800px] bg-[#05b0fe] -z-10 blur-[400px] opacity-50"></div>
+        <div class="absolute bottom-[50%] left-[50%] -translate-x-[50%] translate-y-[50%] w-[800px] h-[800px] bg-[#09ffc9] -z-10 blur-[400px] opacity-50"></div>
+        <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[#1bff53] -z-10 blur-[400px] opacity-50"></div>
+    </div>
 {% endblock content %}

@@ -40,6 +40,7 @@ TIME_ZONE = "EST"
 # Application definition
 
 INSTALLED_APPS = [
+    "svg",
     "tailwind",
     "theme",
     "django_browser_reload",
