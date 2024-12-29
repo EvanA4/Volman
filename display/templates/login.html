@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "navbar.html" %}
+    <p class="text-white mt-[50px]">Welcome to the login page! (From HTML)</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="username" name="username"><br>
+        <input type="text" placeholder="password" name="password"><br>
+        <input type="submit" value="Submit" class="bg-white py-2 px-5 rounded-lg">
+    </form>
+{% endblock content %}

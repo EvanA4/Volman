@@ -27,6 +27,7 @@ def vol_init(vols: list[dict]):
             "model": "display.Volunteer",
             "fields": {
                 "name": "",
+                "email": "",
                 "age": random.randint(YOUNGEST_AGE, 75),
                 "createdAt": "",
                 "sessions": [],
@@ -38,6 +39,9 @@ def vol_init(vols: list[dict]):
         while newvol["fields"]["name"] in namesset:
             newvol["fields"]["name"] = names.get_full_name()
         namesset.add(newvol["fields"]["name"])
+
+        # use name for email
+        newvol["fields"]["email"] = newvol["fields"]["name"].replace(" ", "").lower() + "@example.com"
 
         # get time of creation (must be after the person turned YOUNGEST_AGE)
         agethresh = datetime.now() - timedelta(days=(newvol["fields"]["age"] - YOUNGEST_AGE) * 365)

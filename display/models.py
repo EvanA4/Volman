@@ -12,6 +12,7 @@ class Session(models.Model):
 
 class Volunteer(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, default="undefined@gmail.com")
     age = models.IntegerField()
     createdAt = models.DateTimeField(default=timezone.now)
     sessions = models.ManyToManyField(Session)
