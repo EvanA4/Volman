@@ -31,9 +31,9 @@ module.exports = {
          * patterns match your project structure.
          */
         /* JS 1: Ignore any JavaScript in node_modules folder. */
-        // '!../../**/node_modules',
+        '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
-        // '../../**/*.js',
+        '../../**/*.ts',
 
         /**
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
@@ -42,7 +42,11 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            transitionProperty: {
+                'width': 'width'
+            }
+        },
     },
     plugins: [
         /**
