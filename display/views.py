@@ -53,22 +53,26 @@ def user(request: HttpRequest):
     if not request.user.is_authenticated:
         return redirect("display:login")
     
-    vol = Volunteer.objects.get(email=request.user.email)
-    seshs = vol.sessions.all()
-    num_seshs = len(seshs)
-    total_hr = 0
-    for sesh in seshs:
-        total_hr += sesh.length
-    avg_hr = total_hr / num_seshs
+    try:
+        vol = Volunteer.objects.get(email=request.user.email)
+        seshs = vol.sessions.all()
+        num_seshs = len(seshs)
+        total_hr = 0
+        for sesh in seshs:
+            total_hr += sesh.length
+        avg_hr = total_hr / num_seshs
 
-    return render(request, "user.html", {
-        "user": request.user,
-        "vol": vol,
-        "seshs": seshs,
-        "num_seshs": num_seshs,
-        "total_hr": total_hr,
-        "avg_hr": avg_hr
-    })
+        return render(request, "user.html", {
+            "user": request.user,
+            "vol": vol,
+            "seshs": seshs,
+            "num_seshs": num_seshs,
+            "total_hr": total_hr,
+            "avg_hr": avg_hr
+        })
+    
+    except:
+        return redirect("display:login")
 
 def mylogin(request: HttpRequest):
     if request.method == "POST":

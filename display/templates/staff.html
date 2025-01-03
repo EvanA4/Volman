@@ -8,24 +8,30 @@
 <div class="relative h-[100vh]">
     <div class="pt-[78px] ml-7 w-fit">
         <p class="text-3xl text-white mb-5">Volunteers</p>
-        <div class="border p-5 flex flex-col gap-5 w-[30vw] h-[400px] overflow-y-scroll rounded-xl">
-            {% for vol in vols %}
-                <button onclick="magic('{{ vol.name }}'); setSidePage(false);" class="p-3 bg-neutral-800 rounded-lg hover:bg-neutral-700">
-                    <p class="text-xl text-white"><b>{{ vol.name }} ({{ vol.age }})</b></p>
-                    <p class="text-neutral-300">{{ vol.email }}</p>
-                </button>
-            {% endfor %}
+        <div class="py-5 flex flex-col gap-5 w-[30vw] h-[400px] overflow-y-scroll rounded-xl bg-neutral-900 bg-opacity-75">
+            <div class="overflow-y-scroll flex flex-col gap-5 px-5">
+                {% for vol in vols %}
+                    <button onclick="magic('{{ vol.name }}'); setSidePage(false);" class="p-3 bg-neutral-800 rounded-lg hover:bg-neutral-700">
+                        <p class="text-xl text-white"><b>{{ vol.name }} ({{ vol.age }})</b></p>
+                        <p class="text-neutral-300">{{ vol.email }}</p>
+                    </button>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
     <div id="sidepage" class="absolute top-0 right-0 w-0 h-[100%] overflow-hidden pt-[50px] transition-all duration-300">
-        <div class="bg-neutral-900 h-full p-7 w-[50vw]">
+        <div class="bg-neutral-900 h-full p-7 w-[50vw] bg-opacity-75">
             <div class="flex flex-row-reverse">
                 <button class="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg" onclick="setSidePage(true);">Close</button>
             </div>
             <div id="userinfo" class="text-white"></div>
         </div>
     </div>
+
+    <div class="absolute top-0 left-0 w-[800px] h-[800px] bg-[#05b0fe] -z-10 blur-[400px] opacity-50"></div>
+    <div class="absolute bottom-[50%] left-[50%] -translate-x-[50%] translate-y-[50%] w-[800px] h-[800px] bg-[#09ffc9] -z-10 blur-[400px] opacity-50"></div>
+    <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[#1bff53] -z-10 blur-[400px] opacity-50"></div>
 </div>
 
 <script src="{% static 'ts/staff.ts' %}"></script>

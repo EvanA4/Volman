@@ -3,36 +3,44 @@
 {% block content %}
     {% include "navbar.html" %}
 
-    <div class="w-full flex flex-col items-center mt-[50px] text-white">
-        <div class="flex flex-col items-center my-12">
-            <p class="text-3xl">{{ vol.name }}</p>
-            <p class="text-xl text-neutral-300">{{ vol.email }}</p>
-        </div>
-        <div class="flex gap-7">
-            <div class="text-xl bg-neutral-800 p-3 rounded-lg w-[300px]">
-                <p>Total Hours</p>
-                <p class="text-3xl"><b>{{ total_hr }}</b></p>
+    <div class='w-[100vw] h-[100vh] relative overflow-hidden flex flex-col items-center justify-center'>
+        <div class="flex flex-col items-center text-white p-7 rounded-2xl bg-neutral-900 bg-opacity-60">
+            <div class="flex flex-col items-center mb-12">
+                <p class="text-3xl">{{ vol.name }}</p>
+                <p class="text-xl text-neutral-300">{{ vol.email }}</p>
             </div>
-            <div class="text-xl bg-neutral-800 p-3 rounded-lg w-[300px]">
-                <p>Number of Sessions</p>
-                <p class="text-3xl"><b>{{ num_seshs }}</b></p>
+            <div class="flex gap-7">
+                <div class="text-xl bg-neutral-700 p-3 rounded-lg w-[300px]">
+                    <p>Total Hours</p>
+                    <p class="text-3xl"><b>{{ total_hr }}</b></p>
+                </div>
+                <div class="text-xl bg-neutral-700 p-3 rounded-lg w-[300px]">
+                    <p>Number of Sessions</p>
+                    <p class="text-3xl"><b>{{ num_seshs }}</b></p>
+                </div>
+                <div class="text-xl bg-neutral-700 p-3 rounded-lg w-[300px]">
+                    <p>Average Hours per Session</p>
+                    <p class="text-3xl"><b>{{ avg_hr|floatformat:1 }}</b></p>
+                </div>
             </div>
-            <div class="text-xl bg-neutral-800 p-3 rounded-lg w-[300px]">
-                <p>Average Hours per Session</p>
-                <p class="text-3xl"><b>{{ avg_hr|floatformat:1 }}</b></p>
-            </div>
-        </div>
-        <div>
-            <p class="text-3xl mb-5 mt-12">Sessions</p>
-            <div class="border p-5 flex flex-col gap-5 w-[30vw] h-[400px] overflow-y-scroll rounded-xl">
-                {% for sesh in seshs %}
-                    <div class="p-3 bg-neutral-800 rounded-lg">
-                        <p class="text-neutral-300">{{ sesh.beganAt }}</p>
-                        <p class="text-3xl"><b>{{ sesh.length }}h</b></p>
+            <div>
+                <p class="text-3xl mb-5 mt-12">Sessions</p>
+                <div class="py-5 w-[30vw] rounded-xl">
+                    <div class="flex flex-col gap-5 h-[360px] overflow-y-scroll">
+                        {% for sesh in seshs %}
+                            <div class="p-3 bg-neutral-700 rounded-lg">
+                                <p class="text-neutral-300">{{ sesh.beganAt }}</p>
+                                <p class="text-3xl"><b>{{ sesh.length }}h</b></p>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
+
+        <div class="absolute top-0 left-0 w-[800px] h-[800px] bg-[#05b0fe] -z-10 blur-[400px] opacity-50"></div>
+        <div class="absolute bottom-[50%] left-[50%] -translate-x-[50%] translate-y-[50%] w-[800px] h-[800px] bg-[#09ffc9] -z-10 blur-[400px] opacity-50"></div>
+        <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-[#1bff53] -z-10 blur-[400px] opacity-50"></div>
     </div>
 
 {% endblock content %}
